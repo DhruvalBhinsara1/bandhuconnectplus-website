@@ -1,7 +1,4 @@
 {
-  "builds": [
-    { "src": "next.config.ts", "use": "@vercel/next" }
-  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/$1" }
   ]
