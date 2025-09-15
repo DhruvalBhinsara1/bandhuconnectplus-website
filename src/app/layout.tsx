@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
+import { I18nProvider } from "../lib/i18n";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -106,11 +107,9 @@ export default function RootLayout({
   }, []);
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <div id="site-cursor" aria-hidden="true"></div>
-        {children}
+        <I18nProvider>{children}</I18nProvider>
       </body>
     </html>
   );

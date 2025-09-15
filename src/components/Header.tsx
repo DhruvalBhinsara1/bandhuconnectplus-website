@@ -1,4 +1,5 @@
-'use client';
+"use client";
+import LanguageSelector from "./LanguageSelector";
 
 export default function Header() {
   return (
@@ -7,7 +8,9 @@ export default function Header() {
         <div className="site-container px-6 py-4 flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <span className="font-bold text-2xl text-black">BandhuConnect+</span>
+          <a href="#top" data-cursor="black" className="font-bold text-2xl text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent">
+            BandhuConnect+
+          </a>
           </div>
 
           {/* Desktop Navigation */}
@@ -43,10 +46,7 @@ export default function Header() {
               </svg>
               <span>Download App</span>
             </a>
-            <select className="ml-2 border rounded px-2 py-1 text-sm" aria-label="Select language" data-cursor="black">
-              <option value="en">EN</option>
-              <option value="hi">HI</option>
-            </select>
+            <LanguageSelector />
             <button className="ml-2 px-2 py-1 border rounded text-sm" aria-label="Toggle high contrast" tabIndex={0} data-cursor="black">A</button>
           </div>
         </div>

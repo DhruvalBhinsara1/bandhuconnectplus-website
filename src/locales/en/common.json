@@ -1,0 +1,18 @@
+{
+  "site.title": "BandhuConnect+",
+  "hero.headline": "Your Trusted Companion for Mahakumbh Mela",
+  "hero.subheadline": "Connect with volunteers, request help, and navigate the Mela with confidence.",
+  "features.title": "Features in Development",
+  "feature.emergency.title": "Emergency Aid Request",
+  "feature.emergency.desc": "Get instant help from verified volunteers during emergencies.",
+  "feature.tracking.title": "Real-time Volunteer Tracking",
+  "feature.tracking.desc": "Ask for nearby volunteers and get help fast, wherever you are.",
+  "feature.multi.title": "Multi-language Support",
+  "feature.multi.desc": "Available in major Indian languages; planned for the MVP.",
+  "feature.offline.title": "Offline Maps",
+  "feature.offline.desc": "Navigate the Mela grounds even without internet access.",
+  "feature.chat.title": "Community Chat",
+  "feature.chat.desc": "Connect and communicate with fellow pilgrims and volunteers.",
+  "feature.safe.title": "Safe Zone Alerts",
+  "feature.safe.desc": "Receive notifications about safe zones and important updates."
+}
