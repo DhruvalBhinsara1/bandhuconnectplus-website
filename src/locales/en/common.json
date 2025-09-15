@@ -4,17 +4,17 @@
   "hero.subheadline": "Connect with volunteers, request help, and navigate the Mela with confidence.",
   "features.title": "Features in Development",
   "feature.emergency.title": "Emergency Aid Request",
-  "feature.emergency.desc": "Get instant help from verified volunteers during emergencies.",
+  "feature.emergency.desc": "Get instant help from verified volunteers during emergencies. Request aid with a single tap and receive real-time updates until help arrives.",
   "feature.tracking.title": "Real-time Volunteer Tracking",
-  "feature.tracking.desc": "Ask for nearby volunteers and get help fast, wherever you are.",
+  "feature.tracking.desc": "See available volunteers on the map and get help fast, wherever you are. Track your request status and know exactly who is coming to assist you.",
   "feature.multi.title": "Multi-language Support",
-  "feature.multi.desc": "Available in major Indian languages; planned for the MVP.",
+  "feature.multi.desc": "Switch between major Indian languages instantly. Designed for accessibility and inclusivity so everyone can use the app with ease.",
   "feature.offline.title": "Offline Maps",
-  "feature.offline.desc": "Navigate the Mela grounds even without internet access.",
+  "feature.offline.desc": "Access maps and key information even without internet. Stay connected to help and guidance, no matter your network coverage.",
   "feature.chat.title": "Community Chat",
-  "feature.chat.desc": "Connect and communicate with fellow pilgrims and volunteers.",
+  "feature.chat.desc": "Chat securely with fellow pilgrims and volunteers. Share updates, ask questions, and build community support in real time.",
   "feature.safe.title": "Safe Zone Alerts",
-  "feature.safe.desc": "Receive notifications about safe zones and important updates."
+  "feature.safe.desc": "Get instant alerts about safe zones, emergencies, and important updates. Stay informed and make safer decisions during your journey."
   ,
   "download.title": "Download BandhuConnect+ App",
   "download.android": "Android",
@@ -61,5 +61,15 @@
   "faq.q3.title": "Which languages are supported?",
   "faq.q3.answer": "Hindi and English in the current production build; more regional languages are planned for future releases.",
   "faq.q4.title": "Do I need internet to use the app?",
-  "faq.q4.answer": "Core features like requesting help and cached maps have limited offline capability, but real-time tracking, chat, and live volunteer coordination require an internet connection."
+  "faq.q4.answer": "Core features like requesting help and cached maps have limited offline capability, but real-time tracking, chat, and live volunteer coordination require an internet connection.",
+
+  "story.title": "Why BandhuConnect+",
+  "story.altTitle": "Our Story",
+  "story.pilgrims.title": "Why Pilgrims Need This App",
+  "story.pilgrims.body": "Every year, thousands of pilgrims embark on journeys seeking spiritual fulfillment, peace, and connection. These journeys, while deeply meaningful, often come with challenges: navigating unfamiliar places, finding trustworthy help, and accessing timely information. Pilgrims may feel lost, overwhelmed, or isolated, especially in large gatherings or remote locations. BandhuConnect Plus was created to bridge this gap—offering a digital companion that guides, supports, and connects pilgrims throughout their sacred journey. With real-time updates, location services, and access to verified volunteers, pilgrims can focus on their spiritual experience, knowing help is always at hand.",
+  "story.volunteers.title": "Why People Sign Up to Volunteer",
+  "story.volunteers.body": "Volunteering is more than service—it's a calling to make a difference. People sign up for BandhuConnect Plus because they want to give back, support their community, and be part of something bigger than themselves. Volunteers are the heart of the app, providing assistance, guidance, and care to pilgrims in need. Through the app, volunteers can easily connect with those who need help, track their impact, and join a network of like-minded individuals. The sense of purpose, gratitude from pilgrims, and the opportunity to contribute to a meaningful cause inspire people to join as volunteers.",
+  "story.origin.title": "The Story of BandhuConnect Plus",
+  "story.origin.body": "BandhuConnect Plus was born from real stories—of pilgrims who struggled, and volunteers who stepped up. It is a platform built on empathy, trust, and community. By bringing together pilgrims and volunteers, the app creates a support system that transforms journeys into shared experiences. Whether you are seeking guidance or offering help, BandhuConnect Plus is your companion, making every step safer, easier, and more connected.",
+  "story.cta": "Join us in this journey—where every pilgrim finds a friend, and every volunteer finds purpose."
 }

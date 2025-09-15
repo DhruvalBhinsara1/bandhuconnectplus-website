@@ -8,10 +8,16 @@ export default function LanguageSelector() {
   return (
     <select
       value={locale}
-  onChange={(e) => setLocale(e.target.value as Locale)}
+      onChange={(e) => setLocale(e.target.value as Locale)}
       className="ml-2 border rounded px-2 py-1 text-sm"
       aria-label="Select language"
       data-cursor="black"
+      style={{
+        zIndex: 9999,
+        position: "relative",
+        maxHeight: "180px",
+        overflowY: "auto",
+      }}
     >
       <option value="en">EN</option>
       <option value="hi">HI</option>

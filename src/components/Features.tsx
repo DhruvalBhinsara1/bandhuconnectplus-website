@@ -8,9 +8,9 @@ export default function Features() {
       <div className="site-container">
         <h2 className="font-montserrat font-extrabold text-3xl text-black mb-8 text-center drop-shadow">{t('features.title')}</h2>
 
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 features-grid">
           {/** Card pattern: consistent size, padding, and icon */}
-          <div className="bg-white shadow-lg rounded-2xl p-8 flex flex-col items-start h-full min-h-[280px]" role="listitem">
+          <div className="bg-white shadow-lg rounded-2xl p-8 flex flex-col items-start h-full feature-card" role="listitem">
             <div className="flex items-center gap-4 mb-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-brand-gold text-black">
                 <svg width="20" height="20" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#FF6B35"/><path d="M20 12v16M12 20h16" stroke="#fff" strokeWidth="2" strokeLinecap="round"/></svg>
@@ -23,7 +23,7 @@ export default function Features() {
             <p className="text-black text-sm mt-auto">{t('feature.emergency.desc')}</p>
           </div>
 
-          <div className="bg-white shadow-lg rounded-2xl p-8 flex flex-col items-start h-full min-h-[280px]" role="listitem">
+          <div className="bg-white shadow-lg rounded-2xl p-8 flex flex-col items-start h-full feature-card" role="listitem">
             <div className="flex items-center gap-4 mb-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-brand-blue text-white">
                 <svg width="20" height="20" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#4A90E2"/><path d="M20 13a7 7 0 0 1 7 7c0 4.5-7 10-7 10s-7-5.5-7-10a7 7 0 0 1 7-7zm0 4a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" fill="#fff"/></svg>
@@ -36,7 +36,7 @@ export default function Features() {
             <p className="text-black text-sm mt-auto">{t('feature.tracking.desc')}</p>
           </div>
 
-          <div className="bg-white shadow-lg rounded-2xl p-8 flex flex-col items-start h-full min-h-[280px]" role="listitem">
+          <div className="bg-white shadow-lg rounded-2xl p-8 flex flex-col items-start h-full feature-card" role="listitem">
             <div className="flex items-center gap-4 mb-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-brand-gold text-black">
                 <svg width="20" height="20" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#FFD23F"/><text x="50%" y="55%" textAnchor="middle" fill="#000000" fontSize="12" fontFamily="Arial" dy=".3em">अ</text></svg>
@@ -49,7 +49,7 @@ export default function Features() {
             <p className="text-black text-sm mt-auto">{t('feature.multi.desc')}</p>
           </div>
 
-          <div className="bg-white shadow-lg rounded-2xl p-8 flex flex-col items-start h-full min-h-[280px]" role="listitem">
+          <div className="bg-white shadow-lg rounded-2xl p-8 flex flex-col items-start h-full feature-card" role="listitem">
             <div className="flex items-center gap-4 mb-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-brand-gold text-black">
                 <svg width="20" height="20" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#FFD23F"/><rect x="12" y="14" width="16" height="12" rx="2" fill="#fff"/><path d="M12 20h16" stroke="#FF6B35" strokeWidth="2"/></svg>
@@ -62,7 +62,7 @@ export default function Features() {
             <p className="text-black text-sm mt-auto">{t('feature.offline.desc')}</p>
           </div>
 
-          <div className="bg-white shadow-lg rounded-2xl p-8 flex flex-col items-start h-full min-h-[280px]" role="listitem">
+          <div className="bg-white shadow-lg rounded-2xl p-8 flex flex-col items-start h-full feature-card" role="listitem">
             <div className="flex items-center gap-4 mb-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-brand-blue text-white">
                 <svg width="20" height="20" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#4A90E2"/><rect x="13" y="15" width="14" height="8" rx="2" fill="#fff"/><path d="M13 23l-2 4" stroke="#4A90E2" strokeWidth="2"/><circle cx="17" cy="19" r="1" fill="#4A90E2"/><circle cx="21" cy="19" r="1" fill="#4A90E2"/><circle cx="25" cy="19" r="1" fill="#4A90E2"/></svg>
@@ -75,7 +75,7 @@ export default function Features() {
             <p className="text-black text-sm mt-auto">{t('feature.chat.desc')}</p>
           </div>
 
-          <div className="bg-white shadow-lg rounded-2xl p-8 flex flex-col items-start h-full min-h-[280px]" role="listitem">
+          <div className="bg-white shadow-lg rounded-2xl p-8 flex flex-col items-start h-full feature-card" role="listitem">
             <div className="flex items-center gap-4 mb-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-brand-orange text-white">
                 <svg width="20" height="20" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#FF6B35"/><rect x="15" y="15" width="10" height="10" rx="2" fill="#fff"/><path d="M20 18v4" stroke="#FF6B35" strokeWidth="2"/><circle cx="20" cy="22" r="1" fill="#FF6B35"/></svg>
@@ -89,6 +89,13 @@ export default function Features() {
           </div>
         </div>
       </div>
+      <style>{`
+        @media (min-width: 900px) {
+          .features-grid .feature-card {
+            min-height: 360px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

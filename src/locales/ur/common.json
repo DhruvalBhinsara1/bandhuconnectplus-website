@@ -61,5 +61,14 @@
     "faq.q3.title": "Which languages are supported?",
     "faq.q3.answer": "Hindi and English in the current production build; more regional languages are planned for future releases.",
     "faq.q4.title": "Do I need internet to use the app?",
-    "faq.q4.answer": "Core features like requesting help and cached maps have limited offline capability, but real-time tracking, chat, and live volunteer coordination require an internet connection."
+    "faq.q4.answer": "Core features like requesting help and cached maps have limited offline capability, but real-time tracking, chat, and live volunteer coordination require an internet connection.",
+
+  "story.title": "BandhuConnect+ کیوں؟",
+  "story.pilgrims.title": "زیارت کرنے والوں کو اس ایپ کی کیوں ضرورت ہے",
+  "story.pilgrims.body": "ہر سال، ہزاروں زائرین روحانی تکمیل، سکون اور رابطے کی تلاش میں سفر کرتے ہیں۔ یہ سفر اگرچہ گہرائی سے معنی خیز ہیں، لیکن ان میں چیلنجز ہیں: نامعلوم مقامات کو نیویگیٹ کرنا، قابل اعتماد مدد تلاش کرنا اور وقت پر معلومات حاصل کرنا۔ زائرین گمشدہ، بوجھل یا الگ تھلگ محسوس کر سکتے ہیں، خاص طور پر بڑی جمع میں یا دور دراز مقامات پر۔ BandhuConnect Plus ان خلا کو پُر کرنے کے لیے بنایا گیا ہے—ایک ڈیجیٹل ساتھی جو ان کی مقدس سفر کے دوران رہنمائی، مدد اور رابطہ کرتا ہے۔ ریئل ٹائم اپ ڈیٹس، لوکیشن سروسز اور تصدیق شدہ رضاکاروں تک رسائی کے ساتھ، زائرین اپنے روحانی تجربے پر توجہ مرکوز کر سکتے ہیں، یہ جانتے ہوئے کہ مدد ہمیشہ ہاتھ میں ہے۔",
+  "story.volunteers.title": "لوگ رضاکار کیوں بنتے ہیں",
+  "story.volunteers.body": "رضاکاری صرف خدمت نہیں ہے—یہ ایک کالنگ ہے جو تبدیلی لاتی ہے۔ لوگ BandhuConnect Plus میں رضاکار بنتے ہیں کیونکہ وہ واپس دینا چاہتے ہیں، اپنے کمیونٹی کو سپورٹ دینا چاہتے ہیں اور اپنے سے بڑی چیز کا حصہ بننا چاہتے ہیں۔ رضاکار ایپ کا دل ہیں، جو ضرورت مند زائرین کو مدد، رہنمائی اور دیکھ بھال فراہم کرتے ہیں۔ ایپ کے ذریعے، رضاکار آسانی سے ان سے رابطہ کر سکتے ہیں جنہیں مدد درکار ہے، اپنے اثر کو ٹریک کر سکتے ہیں اور ایک جیسی سوچ رکھنے والے افراد کے نیٹ ورک میں شامل ہو سکتے ہیں۔ مقصد کی احساس، زائرین کا شکریہ اور ایک معنی خیز وجہ میں حصہ ڈالنے کا موقع یہ لوگوں کو رضاکار بننے کی ترغیب دیتا ہے۔",
+  "story.origin.title": "BandhuConnect Plus کی کہانی",
+  "story.origin.body": "BandhuConnect Plus حقیقی کہانیوں سے پیدا ہوا—زائرین سے جو جدوجہد کر رہے تھے، اور رضاکاروں سے جو آگے آئے۔ یہ ایک پلیٹ فارم ہے جو ہمدردی، اعتماد اور کمیونٹی پر بنایا گیا ہے۔ زائرین اور رضاکاروں کو اکٹھا کر کے، ایپ مدد کا نظام بناتا ہے جو سفر کو مشترکہ تجربات میں تبدیل کر دیتا ہے۔ چاہے آپ رہنمائی تلاش کر رہے ہوں یا مدد دے رہے ہوں، BandhuConnect Plus آپ کا ساتھی ہے، جو ہر قدم کو زیادہ محفوظ، آسان اور مربوط بناتا ہے۔",
+  "story.cta": "ہمارے ساتھ اس سفر میں شامل ہوں—جہاں ہر زائر کو ایک دوست ملتا ہے، اور ہر رضاکار کو مقصد ملتا ہے۔"
 }

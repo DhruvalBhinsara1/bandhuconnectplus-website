@@ -1,5 +1,6 @@
 
 import Header from '../components/Header';
+import WhyBandhuConnect from '../components/WhyBandhuConnect';
 import Hero from '../components/Hero';
 import Features from '../components/Features';
 import HowItWorks from '../components/HowItWorks';
@@ -11,15 +12,16 @@ import Footer from '../components/Footer';
 
 export default function Home() {
   return (
-  <div id="top" className="font-sans bg-white text-black min-h-screen flex flex-col">
+    <div id="top" className="font-sans bg-white text-black min-h-screen flex flex-col">
       <Header />
-        <main className="flex-1 w-full">
+      <main className="flex-1 w-full">
         <Hero />
+        <WhyBandhuConnect />
         <Features />
         <HowItWorks />
         <TrustSafety />
         <CommunityImpact />
-  <FAQ />
+        <FAQ />
         <Download />
       </main>
       <Footer />
