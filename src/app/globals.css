@@ -23,7 +23,33 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+/* Language-specific font stacks for better script rendering */
+html[lang="hi"] body, html[lang="mr"] body {
+  font-family: 'Noto Sans Devanagari', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+html[lang="bn"] body {
+  font-family: 'Noto Sans Bengali', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+html[lang="ta"] body {
+  font-family: 'Noto Sans Tamil', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+html[lang="gu"] body {
+  font-family: 'Noto Sans Gujarati', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+html[lang="ur"] body {
+  font-family: 'Noto Naskh Arabic', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+html[lang="kn"] body {
+  font-family: 'Noto Sans Kannada', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+html[lang="or"] body {
+  font-family: 'Noto Sans Oriya', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+html[lang="ml"] body {
+  font-family: 'Noto Sans Malayalam', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 
 /* When the site-cursor visual layer is active, hide the native system cursor to avoid duplicates */
@@ -57,3 +83,28 @@ body.use-site-cursor { cursor: none !important; }
 .cursor-blue #site-cursor { background: var(--brand-blue); }
 .cursor-black #site-cursor { background: #000; }
 .cursor-yellow #site-cursor { background: var(--brand-gold); }
+
+/* Locale transition helper: fade content when language changes */
+.locale-fade-enter {
+  opacity: 0;
+  transition: opacity 220ms ease-in;
+}
+.locale-fade-enter-active {
+  opacity: 1;
+}
+.locale-fade-exit {
+  opacity: 1;
+}
+.locale-fade-exit-active {
+  opacity: 0;
+  transition: opacity 180ms ease-out;
+}
+
+/* RTL helper: when html[dir="rtl"] is set this provides a couple helpers
+   for small adjustments; heavy RTL support will require layout-specific fixes. */
+html[dir="rtl"] {
+  direction: rtl;
+}
+html[dir="rtl"] .text-left { text-align: right; }
+html[dir="rtl"] .text-right { text-align: left; }
+html[dir="rtl"] .pl-\[1rem\] { padding-left: 0; padding-right: 1rem; }

@@ -59,16 +59,36 @@ function loadLocaleData(locale: Locale): Promise<Translations> {
 export function I18nProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>(DEFAULT_LOCALE);
   const [messages, setMessages] = useState<Translations>({});
+  const [animKey, setAnimKey] = useState(0);
+
+  // simple fade: when locale changes we'll bump animKey to re-render wrapper and allow CSS transition
 
   useEffect(() => {
     let mounted = true;
+    // start fade-out by bumping key (the wrapper can use animKey to set classes)
+    setAnimKey((k) => k + 1);
     loadLocaleData(locale).then((data) => {
       if (!mounted) return;
       setMessages(data || {});
+      // small timeout to allow CSS to apply then remove (keeps it simple)
+      setTimeout(() => {
+        if (!mounted) return;
+        setAnimKey((k) => k + 1);
+      }, 80);
     });
     return () => {
       mounted = false;
     };
+  }, [locale]);
+
+  useEffect(() => {
+    // update document lang and dir for accessibility
+    try {
+      document.documentElement.lang = locale;
+      document.documentElement.dir = locale === 'ur' ? 'rtl' : 'ltr';
+    } catch (e) {
+      // ignore in non-browser contexts
+    }
   }, [locale]);
 
   useEffect(() => {
@@ -93,7 +113,13 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <I18nContext.Provider value={{ locale, setLocale, t }}>{children}</I18nContext.Provider>
+    <I18nContext.Provider value={{ locale, setLocale, t }}>
+      <div key={animKey} className="transition-opacity duration-200 ease-in-out">
+        {/* Announce language changes for assistive tech */}
+        <div aria-live="polite" className="sr-only">{`Language changed to ${locale}`}</div>
+        {children}
+      </div>
+    </I18nContext.Provider>
   );
 }
 

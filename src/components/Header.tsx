@@ -19,6 +19,7 @@ export default function Header() {
             <a href="#how-it-works" className="text-black hover:text-[#FF6B35] focus:outline-none focus:ring-2 focus:ring-[#FF6B35]" tabIndex={0} data-cursor="black">How It Works</a>
             <a href="#trust" className="text-black hover:text-[#FF6B35] focus:outline-none focus:ring-2 focus:ring-[#FF6B35]" tabIndex={0} data-cursor="black">Trust & Safety</a>
             <a href="#community" className="text-black hover:text-[#FF6B35] focus:outline-none focus:ring-2 focus:ring-[#FF6B35]" tabIndex={0} data-cursor="black">Community Impact</a>
+            <a href="#faq" className="text-black hover:text-[#FF6B35] focus:outline-none focus:ring-2 focus:ring-[#FF6B35]" tabIndex={0} data-cursor="black">FAQ</a>
           </nav>
 
           {/* Mobile Hamburger Menu */}
@@ -58,6 +59,7 @@ export default function Header() {
         <a href="#how-it-works" className="block px-6 py-3 border-b text-black hover:bg-[#FFD23F]/20 focus:outline-none focus:ring-2 focus:ring-[#FF6B35]" data-cursor="black">How It Works</a>
         <a href="#trust" className="block px-6 py-3 border-b text-black hover:bg-[#FFD23F]/20 focus:outline-none focus:ring-2 focus:ring-[#FF6B35]" data-cursor="black">Trust & Safety</a>
         <a href="#community" className="block px-6 py-3 border-b text-black hover:bg-[#FFD23F]/20 focus:outline-none focus:ring-2 focus:ring-[#FF6B35]" data-cursor="black">Community Impact</a>
+  <a href="#faq" className="block px-6 py-3 border-b text-black hover:bg-[#FFD23F]/20 focus:outline-none focus:ring-2 focus:ring-[#FF6B35]" data-cursor="black">FAQ</a>
 
         <div className="flex gap-2 px-6 py-3 items-center">
           <a href="#download" className="bg-accent text-black px-4 py-2 rounded-full font-semibold hover:bg-accent/90 transition" data-cursor="black">Download App</a>

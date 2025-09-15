@@ -6,6 +6,7 @@ import HowItWorks from '../components/HowItWorks';
 import TrustSafety from '../components/TrustSafety';
 import CommunityImpact from '../components/CommunityImpact';
 import Download from '../components/Download';
+import FAQ from '../components/FAQ';
 import Footer from '../components/Footer';
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
         <HowItWorks />
         <TrustSafety />
         <CommunityImpact />
+  <FAQ />
         <Download />
       </main>
       <Footer />
