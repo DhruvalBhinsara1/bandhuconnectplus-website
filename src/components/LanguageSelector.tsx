@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import type { Locale } from "../lib/i18n";
 import { useTranslation } from "../lib/i18n";
 
 export default function LanguageSelector() {
@@ -7,7 +8,7 @@ export default function LanguageSelector() {
   return (
     <select
       value={locale}
-      onChange={(e) => setLocale(e.target.value as any)}
+  onChange={(e) => setLocale(e.target.value as Locale)}
       className="ml-2 border rounded px-2 py-1 text-sm"
       aria-label="Select language"
       data-cursor="black"

@@ -1,7 +1,7 @@
 "use client";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-type Locale =
+export type Locale =
   | "en"
   | "hi"
   | "bn"
@@ -86,7 +86,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     try {
       document.documentElement.lang = locale;
       document.documentElement.dir = locale === 'ur' ? 'rtl' : 'ltr';
-    } catch (e) {
+    } catch {
       // ignore in non-browser contexts
     }
   }, [locale]);
@@ -96,7 +96,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     try {
       const saved = window.localStorage.getItem("locale") as Locale | null;
       if (saved) setLocaleState(saved);
-    } catch (e) {
+    } catch {
       // ignore
     }
   }, []);
@@ -105,7 +105,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     setLocaleState(l);
     try {
       window.localStorage.setItem("locale", l);
-    } catch (e) {}
+  } catch {}
   }
 
   function t(key: string) {

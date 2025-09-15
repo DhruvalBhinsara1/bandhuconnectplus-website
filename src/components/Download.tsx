@@ -1,5 +1,6 @@
 "use client";
 import { useTranslation } from "../lib/i18n";
+import Image from "next/image";
 
 export default function Download() {
   const { t } = useTranslation();
@@ -10,11 +11,11 @@ export default function Download() {
         {/* App store badges as SVG */}
         <div className="flex gap-4">
           <a href="#" data-cursor="black" className="flex items-center gap-2 bg-[#1dbe3a] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#16a32b] focus:outline-none focus-visible:ring-4 focus-visible:ring-[#1dbe3a]/30 transition" aria-label="Download for Android">
-            <img src="/assets/images/android.png" alt="" width="24" height="24" className="flex-shrink-0" aria-hidden="true" />
+            <Image src="/assets/images/android.png" alt="" width={24} height={24} className="flex-shrink-0" aria-hidden />
             {t('download.android') ?? 'Android'}
           </a>
           <a href="#" data-cursor="black" className="flex items-center gap-2 bg-[#4A90E2] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#FFD23F] transition" aria-label="Download for iOS">
-            <img src="/assets/images/apple.png" alt="" width="24" height="24" className="flex-shrink-0" aria-hidden="true" />
+            <Image src="/assets/images/apple.png" alt="" width={24} height={24} className="flex-shrink-0" aria-hidden />
             {t('download.ios') ?? 'iOS'}
           </a>
         </div>

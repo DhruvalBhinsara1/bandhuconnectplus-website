@@ -1,5 +1,6 @@
 "use client";
 import { useTranslation } from "../lib/i18n";
+import Image from "next/image";
 
 export default function Hero() {
   const { t } = useTranslation();
@@ -24,7 +25,7 @@ export default function Hero() {
               aria-label="Download for Android"
             >
               {/* Android icon */}
-              <img src="/assets/images/android.png" alt="" width="18" height="18" className="flex-shrink-0" aria-hidden="true" />
+              <Image src="/assets/images/android.png" alt="" width={18} height={18} className="flex-shrink-0" aria-hidden />
               <span className="sr-only">Android</span>
               <span>{t('download.android') ?? 'Download for Android'}</span>
             </a>
@@ -36,7 +37,7 @@ export default function Hero() {
               aria-label="Download for iOS"
             >
               {/* Apple icon */}
-              <img src="/assets/images/apple.png" alt="" width="18" height="18" className="flex-shrink-0" aria-hidden="true" />
+              <Image src="/assets/images/apple.png" alt="" width={18} height={18} className="flex-shrink-0" aria-hidden />
               <span className="sr-only">iOS</span>
               <span>{t('download.ios') ?? 'Download for iOS'}</span>
             </a>
@@ -46,10 +47,12 @@ export default function Hero() {
         <div className="md:col-span-6 lg:col-span-5 flex items-center justify-center">
           <div className="w-full rounded-2xl overflow-hidden shadow-2xl bg-white p-6 lg:p-8">
               <div className="w-full rounded-lg overflow-hidden bg-gray-50">
-                <img
+                <Image
                   src="/assets/images/hero.png"
                   alt="Pilgrims and volunteers collaborating at Mahakumbh"
                   className="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-cover"
+                  width={800}
+                  height={384}
                   loading="lazy"
                 />
               </div>
