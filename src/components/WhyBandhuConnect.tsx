@@ -20,7 +20,7 @@ const features = [
 
 export default function WhyBandhuConnect() {
   return (
-    <section
+    <section className="why-section"
       style={{
         background: "#f9fafb",
         padding: "64px 0",

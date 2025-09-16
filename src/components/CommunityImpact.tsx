@@ -34,7 +34,7 @@ export default function CommunityImpact() {
                 <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-brand-orange text-white"> 
                   <svg width="18" height="18" viewBox="0 0 36 36" fill="none" aria-hidden="true"><circle cx="18" cy="18" r="18" fill="#FF6B35"/><rect x="10" y="10" width="16" height="16" rx="3" fill="#FFD23F"/></svg>
                 </span>
-                <span className="font-semibold text-black">{t('community.target.events') ?? 'Target: 50+ Events Supported'}</span>
+                <span className="font-semibold text-black">{t('community.target.partners') ?? 'Target: 100+ Community Partners'}</span>
               </div>
             </div>
           </div>

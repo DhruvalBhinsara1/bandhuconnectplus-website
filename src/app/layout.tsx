@@ -21,6 +21,31 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   useEffect(() => {
+    // restore high-contrast preference if present
+    try {
+      const hc = typeof window !== 'undefined' ? window.localStorage.getItem('highContrast') : null;
+      if (hc === 'true') {
+        document.body.classList.add('high-contrast');
+        // Also update button states and aria-pressed for screen readers
+        const desktopButton = document.getElementById('toggle-high-contrast');
+        const mobileButton = document.getElementById('toggle-high-contrast-mobile');
+        if (desktopButton) {
+          desktopButton.classList.add('high-contrast-active');
+          desktopButton.setAttribute('aria-pressed', 'true');
+        }
+        if (mobileButton) {
+          mobileButton.classList.add('high-contrast-active');
+          mobileButton.setAttribute('aria-pressed', 'true');
+        }
+      } else {
+        // ensure aria-pressed defaults to false if not set
+        const desktopButton = document.getElementById('toggle-high-contrast');
+        const mobileButton = document.getElementById('toggle-high-contrast-mobile');
+        if (desktopButton) desktopButton.setAttribute('aria-pressed', 'false');
+        if (mobileButton) mobileButton.setAttribute('aria-pressed', 'false');
+      }
+    } catch {}
+
     const cursorMap = [
       // invert mapping: dark text/background -> orange cursor; brand orange/gold -> black cursor
       {
@@ -109,6 +134,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <div id="site-cursor" aria-hidden="true"></div>
+        {/* ARIA live region for announcements (language changes already announced in I18nProvider) */}
+        <div id="a11y-announcer" aria-live="polite" className="sr-only"></div>
         <I18nProvider>{children}</I18nProvider>
       </body>
     </html>

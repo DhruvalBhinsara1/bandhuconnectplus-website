@@ -4,8 +4,12 @@ import LanguageSelector from "./LanguageSelector";
 export default function Header() {
   return (
     <>
-      <header className="sticky top-0 z-50 bg-white shadow-sm" role="banner">
+  <header id="site-header" className="sticky top-0 z-50 bg-white shadow-sm overflow-visible" role="banner">
         <div className="site-container px-6 py-4 flex items-center justify-between">
+          {/* Skip link for keyboard users */}
+          <a href="#download" className="skip-link">
+            Skip to download
+          </a>
           {/* Logo */}
           <div className="flex items-center gap-2">
           <a href="#top" data-cursor="black" className="font-bold text-2xl text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent">
@@ -47,8 +51,41 @@ export default function Header() {
               </svg>
               <span>Download App</span>
             </a>
-            <LanguageSelector />
-            <button className="ml-2 px-2 py-1 border rounded text-sm" aria-label="Toggle high contrast" tabIndex={0} data-cursor="black">A</button>
+            <div className="relative z-50">
+              <LanguageSelector />
+            </div>
+            <button
+              id="toggle-high-contrast"
+              className="ml-2 px-2 py-1 border rounded text-sm"
+              aria-label="Toggle high contrast"
+              tabIndex={0}
+              data-cursor="black"
+              onClick={() => {
+                try {
+                  const body = document.body;
+                  const on = body.classList.toggle('high-contrast');
+                  window.localStorage.setItem('highContrast', on ? 'true' : 'false');
+                  const button = document.getElementById('toggle-high-contrast');
+                  if (button) {
+                    if (on) {
+                      button.classList.add('high-contrast-active');
+                      button.setAttribute('aria-pressed', 'true');
+                    } else {
+                      button.classList.remove('high-contrast-active');
+                      button.setAttribute('aria-pressed', 'false');
+                    }
+                  }
+                  const mobileBtn = document.getElementById('toggle-high-contrast-mobile');
+                  if (mobileBtn) mobileBtn.setAttribute('aria-pressed', String(on));
+                  try {
+                    const ann = document.getElementById('a11y-announcer');
+                    if (ann) ann.textContent = on ? 'High contrast enabled' : 'High contrast disabled';
+                  } catch {}
+                } catch {}
+              }}
+            >
+              HC
+            </button>
           </div>
         </div>
       </header>
@@ -63,11 +100,37 @@ export default function Header() {
 
         <div className="flex gap-2 px-6 py-3 items-center">
           <a href="#download" className="bg-accent text-black px-4 py-2 rounded-full font-semibold hover:bg-accent/90 transition" data-cursor="black">Download App</a>
-          <select className="ml-2 border rounded px-2 py-1 text-sm" aria-label="Select language" data-cursor="black">
-            <option value="en">EN</option>
-            <option value="hi">HI</option>
-          </select>
-          <button className="ml-2 px-2 py-1 border rounded text-sm" aria-label="Toggle high contrast">A</button>
+          <div className="relative z-50">
+            <LanguageSelector />
+          </div>
+          <button
+            id="toggle-high-contrast-mobile"
+            className="ml-2 px-2 py-1 border rounded text-sm"
+            aria-label="Toggle high contrast"
+            onClick={() => {
+              try {
+                const body = document.body;
+                const on = body.classList.toggle('high-contrast');
+                window.localStorage.setItem('highContrast', on ? 'true' : 'false');
+                const button = document.getElementById('toggle-high-contrast-mobile');
+                if (button) {
+                  if (on) {
+                    button.classList.add('high-contrast-active');
+                    button.setAttribute('aria-pressed', 'true');
+                  } else {
+                    button.classList.remove('high-contrast-active');
+                    button.setAttribute('aria-pressed', 'false');
+                  }
+                }
+                const desktopBtn = document.getElementById('toggle-high-contrast');
+                if (desktopBtn) desktopBtn.setAttribute('aria-pressed', String(on));
+                try {
+                  const ann = document.getElementById('a11y-announcer');
+                  if (ann) ann.textContent = on ? 'High contrast enabled' : 'High contrast disabled';
+                } catch {}
+              } catch {}
+            }}
+          >HC</button>
         </div>
       </nav>
     </>

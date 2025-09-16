@@ -26,6 +26,27 @@ body {
   font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 
+/* Skip link: visible when focused to allow keyboard users to jump to main content */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  background: #000;
+  color: #fff;
+  z-index: 9999;
+  border-radius: 4px;
+}
+
 /* Language-specific font stacks for better script rendering */
 html[lang="hi"] body, html[lang="mr"] body {
   font-family: 'Noto Sans Devanagari', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
@@ -62,6 +83,131 @@ body.use-site-cursor { cursor: none !important; }
   margin-right: auto;
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+/* Design tokens & helpers for Luxe-inspired layout */
+:root {
+  --content-max: 1200px;
+}
+
+/* High contrast theme: toggled with `body.high-contrast` */
+:root {
+  --hc-background: #000000;
+  --hc-foreground: #ffffff;
+  --hc-accent: #FFD23F;
+}
+body.high-contrast {
+  background: var(--hc-background) !important;
+  color: var(--hc-foreground) !important;
+}
+body.high-contrast a, body.high-contrast button {
+  outline-color: var(--hc-accent);
+}
+
+/* Focused high-contrast overrides for common utility classes (minimal, targeted) */
+body.high-contrast .bg-white {
+  background-color: var(--hc-background) !important;
+}
+body.high-contrast .text-black,
+body.high-contrast .text-gray-900,
+body.high-contrast a,
+body.high-contrast button,
+body.high-contrast .site-container,
+body.high-contrast nav,
+body.high-contrast .feature-card {
+  color: var(--hc-foreground) !important;
+}
+/* Make accent CTAs still stand out in HC mode */
+body.high-contrast .bg-accent,
+body.high-contrast .inline-flex.bg-accent {
+  background-color: var(--hc-accent) !important;
+  color: #000 !important;
+}
+/* Add visible focus ring when HC is enabled */
+body.high-contrast :focus {
+  outline: 3px solid var(--hc-accent) !important;
+  outline-offset: 2px !important;
+}
+
+/* High contrast button active state */
+#toggle-high-contrast.high-contrast-active,
+#toggle-high-contrast-mobile.high-contrast-active {
+  background-color: var(--hc-accent) !important;
+  color: #000 !important;
+  border-color: var(--hc-accent) !important;
+}
+
+/* High-contrast overrides for hero, selects, and Why section */
+/* Keep section backgrounds transparent where possible and only swap text and small UI elements.
+   This prevents large black rectangles while ensuring readable text and controls. */
+body.high-contrast #hero .site-container h1,
+body.high-contrast #hero .site-container p,
+body.high-contrast #hero .floating-badge,
+body.high-contrast #hero .floating-badges,
+body.high-contrast #hero .w-full.rounded-2xl .text-sm {
+  color: var(--hc-foreground) !important;
+  background: transparent !important;
+}
+
+/* Hero image wrapper can use HC background but keep the image intact */
+body.high-contrast #hero .w-full.rounded-2xl {
+  background: var(--hc-background) !important;
+  border: 1px solid rgba(255,255,255,0.06) !important;
+}
+
+/* Tone down decorative SVG fills in HC mode so content contrast is preserved */
+body.high-contrast #hero svg[aria-hidden] circle,
+body.high-contrast #hero .hero-blob ellipse,
+body.high-contrast #hero .hero-blob {
+  fill: transparent !important;
+  opacity: 0.25 !important;
+}
+
+/* Ensure native selects and their options are visible in HC mode */
+body.high-contrast select,
+body.high-contrast select option {
+  background: var(--hc-background) !important;
+  color: var(--hc-foreground) !important;
+  border-color: var(--hc-accent) !important;
+}
+
+/* WhyBandhuConnect: override inline styles safely so text flips to HC colors without changing the section background.
+   We target the content elements and retain the section container's light background so the design remains consistent. */
+body.high-contrast .why-section h2,
+body.high-contrast .why-section h3,
+body.high-contrast .why-section p,
+body.high-contrast .why-section .why-col {
+  color: var(--hc-foreground) !important;
+  background: transparent !important;
+}
+
+body.high-contrast .why-section h3 {
+  color: var(--hc-accent) !important;
+}
+
+.content-centered {
+  max-width: var(--content-max);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.accent-highlight {
+  color: var(--accent);
+}
+
+.floating-badges {
+  display: inline-flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+.floating-badge {
+  background: rgba(0,0,0,0.03);
+  color: #111;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
 }
 
 /* Custom floating cursor (visual layer) */

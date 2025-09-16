@@ -1,7 +1,7 @@
 {
   "site.title": "BandhuConnect+",
-  "hero.headline": "તમારો મહાકુંભ મેળાનો વિશ્વસનીય સાથી",
-  "hero.subheadline": "સેવકો સાથે જોડાઓ, મદદ માટે વિનંતી કરો, અને મેળાને આત્મવિશ્વાસથી નેવિગેટ કરો.",
+  "hero.headline": "તમારો મહાકુંભ વિશ્વસનીય સાથી",
+  "hero.subheadline": "સેવકો સાથે જોડાઓ, મદદ માટે વિનંતી કરો, અને આત્મવિશ્વાસથી નેવિગેટ કરો.",
   "features.title": "વિકસનમાં સુવિધાઓ",
   "feature.emergency.title": "એમર્જન્સી મદદ વિનંતી",
   "feature.emergency.desc": "એમર્જન્સી સ્થિતિમાં પ્રમાણિત સેવકો પાસેથી તરત જ મદદ મેળવો.",
@@ -46,6 +46,7 @@
   "community.target.pilgrims": "લક્ષ્ય: 10,000+ pielgrims સહાય",
   "community.target.volunteers": "લક્ષ્ય: 2,000+ સેવકો",
   "community.target.events": "લક્ષ્ય: 50+ ઇવેન્ટ્સ સપોર્ટ",
+  "community.target.partners": "લક્ષ્ય: 100+ સમુદાય ભાગીદાર",
   "community.message": "અમે હાલમાં વિકાસ ચરણમાં છીએ, મહાકુંભ મેળામાં સલામત અને કનેક્ટેડ પિલેgrimઅનુભવો માટે આધાર કુંઠીયો બનાવી રહ્યાં છે.",
   "community.signature": "— BandhuConnect+ ટીમ",
   "community.map.title": "ઇન્ટરએક્ટિવ ઇમ્પેક્ટ મેપ",

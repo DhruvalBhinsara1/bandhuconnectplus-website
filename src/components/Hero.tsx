@@ -1,9 +1,21 @@
 "use client";
+import { useEffect } from "react";
 import { useTranslation } from "../lib/i18n";
 import Image from "next/image";
 
 export default function Hero() {
   const { t } = useTranslation();
+  // set CSS variable --header-height so hero can fill the remaining viewport
+  useEffect(() => {
+    function setHeaderHeight() {
+      const header = document.querySelector('header');
+      const h = header ? header.getBoundingClientRect().height : 64;
+      document.documentElement.style.setProperty('--header-height', `${h}px`);
+    }
+    setHeaderHeight();
+    window.addEventListener('resize', setHeaderHeight);
+    return () => window.removeEventListener('resize', setHeaderHeight);
+  }, []);
   return (
   <section id="hero" className="relative flex flex-col items-center justify-center py-16 md:py-24 lg:py-32 text-center bg-gradient-to-br from-[#FFF9F0] via-[#FFF4E6] to-[#FFF9F0] overflow-hidden" aria-label="Hero section">
       {/* Sacred geometry animated background (SVG) */}
@@ -12,10 +24,44 @@ export default function Hero() {
         <circle cx="50%" cy="50%" r="120" fill="#FF6B35" fillOpacity="0.06" />
         <circle cx="50%" cy="50%" r="60" fill="#4A90E2" fillOpacity="0.04" />
       </svg>
-      <div className="relative z-10 w-full">
+
+      {/* Abstract blobs (Luxe accent) */}
+      <svg className="hero-blob absolute pointer-events-none" width="800" height="600" viewBox="0 0 800 600" aria-hidden="true" style={{right: '-5%', top: '15%'}}>
+        <defs>
+          <linearGradient id="g1" x1="0" x2="1">
+            <stop offset="0%" stopColor="#4CE687" stopOpacity="0.12" />
+            <stop offset="100%" stopColor="#FF6B35" stopOpacity="0.06" />
+          </linearGradient>
+          <filter id="f1" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="24" />
+          </filter>
+        </defs>
+        <g filter="url(#f1)">
+          <ellipse cx="420" cy="260" rx="220" ry="160" fill="url(#g1)" />
+          <ellipse cx="520" cy="340" rx="140" ry="100" fill="#FFD23F" fillOpacity="0.04" />
+        </g>
+      </svg>
+  <div className="relative z-10 w-full" style={{pointerEvents: 'auto'}}>
         <div className="site-container grid grid-cols-1 md:grid-cols-12 gap-8 items-center px-6">
         <div className="md:col-span-6 lg:col-span-7 text-center md:text-left">
-          <h1 className="font-montserrat font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 3xl:text-8xl text-black mb-6 leading-tight">{t('hero.headline')}</h1>
+          <h1 className="font-montserrat font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 3xl:text-8xl text-black mb-6 leading-tight">
+            {/* highlight the brand word with accent using React elements */}
+            {(() => {
+              const raw = t('hero.headline');
+              const marker = 'BandhuConnect+';
+              if (raw.includes(marker)) {
+                const parts = raw.split(marker);
+                return (
+                  <>
+                    {parts[0]}
+                    <span className="accent-highlight">{marker}</span>
+                    {parts.slice(1).join(marker)}
+                  </>
+                );
+              }
+              return raw;
+            })()}
+          </h1>
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-black mb-6 md:mb-8 max-w-xl">{t('hero.subheadline')}</p>
           <div className="flex flex-col sm:flex-row gap-4 items-center mt-4 sm:mt-6">
             <a
@@ -42,7 +88,12 @@ export default function Hero() {
               <span>{t('download.ios') ?? 'Download for iOS'}</span>
             </a>
           </div>
-        </div>
+          {/* Floating badges for social proof */}
+      <div className="floating-badges">
+        <div className="floating-badge">Target: 2,000+ volunteers</div>
+        <div className="floating-badge">Target: 10,000 people</div>
+      </div>
+          </div>
         {/* Hero illustration */}
         <div className="md:col-span-6 lg:col-span-5 flex items-center justify-center">
           <div className="w-full rounded-2xl overflow-hidden shadow-2xl bg-white p-6 lg:p-8">
@@ -61,6 +112,51 @@ export default function Hero() {
         </div>
         </div>
       </div>
+      <style>{`
+        /* Make hero fill initial viewport beneath the sticky header */
+        #hero {
+          /* default: subtract header height so hero fits exactly in viewport under header */
+          min-height: calc(100vh - var(--header-height, 64px));
+        }
+
+        /* Keep taller presence on very large screens but still respect header height */
+        @media (min-width: 1024px) {
+          #hero {
+            min-height: calc(100vh - var(--header-height, 64px));
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+          }
+        }
+        @media (min-width: 1280px) {
+          #hero {
+            min-height: calc(100vh - var(--header-height, 64px));
+          }
+        }
+
+        /* Abstract blob styling and gentle animation */
+        .hero-blob {
+          z-index: 0;
+          opacity: 0.9;
+          transform-origin: center;
+          animation: hero-blob-anim 18s ease-in-out infinite;
+          will-change: transform;
+        }
+        @keyframes hero-blob-anim {
+          0% { transform: translateY(0) scale(1); }
+          50% { transform: translateY(-10px) scale(1.02); }
+          100% { transform: translateY(0) scale(1); }
+        }
+
+        /* Respect users who prefer reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+          .hero-blob {
+            animation: none;
+            transition: none;
+            transform: none;
+            opacity: 0.8;
+          }
+        }
+      `}</style>
     </section>
   );
 }
