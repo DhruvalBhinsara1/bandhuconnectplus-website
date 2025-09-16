@@ -46,6 +46,3 @@ overhaul.txt
 WEBSITE_DESIGN_GUIDELINES.md
 
 tools/
-
-# Ignore optimized hero images
-public/assets/images/optimized/
