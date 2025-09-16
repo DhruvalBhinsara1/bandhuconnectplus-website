@@ -2,6 +2,8 @@
   "site.title": "BandhuConnect+",
   "hero.headline": "Your Trusted Companion for Mahakumbh",
   "hero.subheadline": "Connect with volunteers, request help, and navigate with confidence.",
+  "hero.target.volunteers": "Target: 2,000+ volunteers",
+  "hero.target.people": "Target: 10,000 people",
   "features.title": "Features in Development",
   "feature.emergency.title": "Emergency Aid Request",
   "feature.emergency.desc": "Get instant help from verified volunteers during emergencies. Request aid with a single tap and receive real-time updates until help arrives.",
@@ -21,6 +23,7 @@
   "download.ios": "iOS",
   "download.support": "Supported devices: Android & iOS | Free to use",
   "download.requirements": "System requirements: Android 8.0+, iOS 13+",
+  "download.inprogress": "App build is in progress. The app will be available for download soon.",
 
   "footer.quick": "Quick Links",
   "footer.contact": "Contact Info",
@@ -30,6 +33,7 @@
   "footer.copyright": "© 2025 BandhuConnect+. All rights reserved.",
 
   "how.title": "How It Works",
+  "why.title": "Why BandhuConnect+",
 
   "trust.title": "Security & Trust Framework",
   "trust.verification": "Volunteer Verification (Planned)",
@@ -72,5 +76,11 @@
   "story.volunteers.body": "Volunteering is more than service—it's a calling to make a difference. People sign up for BandhuConnect Plus because they want to give back, support their community, and be part of something bigger than themselves. Volunteers are the heart of the app, providing assistance, guidance, and care to pilgrims in need. Through the app, volunteers can easily connect with those who need help, track their impact, and join a network of like-minded individuals. The sense of purpose, gratitude from pilgrims, and the opportunity to contribute to a meaningful cause inspire people to join as volunteers.",
   "story.origin.title": "The Story of BandhuConnect Plus",
   "story.origin.body": "BandhuConnect Plus was born from real stories—of pilgrims who struggled, and volunteers who stepped up. It is a platform built on empathy, trust, and community. By bringing together pilgrims and volunteers, the app creates a support system that transforms journeys into shared experiences. Whether you are seeking guidance or offering help, BandhuConnect Plus is your companion, making every step safer, easier, and more connected.",
-  "story.cta": "Join us in this journey—where every pilgrim finds a friend, and every volunteer finds purpose."
+  "story.cta": "Join us in this journey—where every pilgrim finds a friend, and every volunteer finds purpose.",
+  "why.feature1.title": "Connect Instantly",
+  "why.feature1.desc": "Effortlessly find and connect with trusted community members. Fast, secure, and always available.",
+  "why.feature2.title": "Empower Safely",
+  "why.feature2.desc": "Your privacy and safety are our top priority. Share, learn, and grow in a protected environment.",
+  "why.feature3.title": "Impact Together",
+  "why.feature3.desc": "Join hands to create real change. Every connection strengthens our community and drives progress."
 }

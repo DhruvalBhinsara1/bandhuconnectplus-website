@@ -1,5 +1,6 @@
 "use client";
 import { useTranslation } from "../lib/i18n";
+import Image from "next/image";
 
 export default function Features() {
   const { t } = useTranslation();
@@ -9,18 +10,19 @@ export default function Features() {
         <h2 className="font-montserrat font-extrabold text-3xl text-black mb-8 text-center drop-shadow">{t('features.title')}</h2>
 
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 features-grid">
-          {/** Card pattern: consistent size, padding, and icon */}
+          {/** EMERGENCY AID REQUEST FEATURE */}
           <div className="bg-white shadow-lg rounded-2xl p-8 flex flex-col items-start h-full feature-card" role="listitem">
-            {/* Placeholder image - replace with real image later */}
-            <div className="w-full h-40 bg-gray-50 rounded-lg overflow-hidden mb-4 flex items-center justify-center" aria-hidden="true">
-              <svg width="180" height="96" viewBox="0 0 180 96" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-80">
-                <rect width="180" height="96" rx="8" fill="#F3F4F6" />
-                <g transform="translate(16,18)" fill="#E5E7EB">
-                  <rect x="0" y="0" width="44" height="44" rx="6" />
-                  <rect x="54" y="0" width="110" height="44" rx="6" />
-                  <rect x="0" y="52" width="164" height="12" rx="6" />
-                </g>
-              </svg>
+            {/* Emergency Aid Request Image */}
+            <div className="w-full h-56 bg-gray-50 rounded-lg overflow-hidden mb-4 flex items-center justify-center" aria-hidden="true">
+              <div className="bg-white p-4 rounded-lg w-full h-full flex items-center justify-center">
+                <Image
+                  src="/assets/images/emergency.png"
+                  alt="Emergency Aid Request"
+                  width={180}
+                  height={96}
+                  className="max-w-full max-h-full object-contain"
+                />
+              </div>
             </div>
             <div className="flex items-center gap-4 mb-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-brand-gold text-black">
@@ -34,16 +36,18 @@ export default function Features() {
             <p className="text-black text-sm mt-auto">{t('feature.emergency.desc')}</p>
           </div>
 
+          {/** REAL-TIME VOLUNTEER TRACKING FEATURE */}
           <div className="bg-white shadow-lg rounded-2xl p-8 flex flex-col items-start h-full feature-card" role="listitem">
-            <div className="w-full h-40 bg-gray-50 rounded-lg overflow-hidden mb-4 flex items-center justify-center" aria-hidden="true">
-              <svg width="180" height="96" viewBox="0 0 180 96" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-80">
-                <rect width="180" height="96" rx="8" fill="#F3F4F6" />
-                <g transform="translate(16,18)" fill="#E5E7EB">
-                  <rect x="0" y="0" width="44" height="44" rx="6" />
-                  <rect x="54" y="0" width="110" height="44" rx="6" />
-                  <rect x="0" y="52" width="164" height="12" rx="6" />
-                </g>
-              </svg>
+            <div className="w-full h-56 bg-gray-50 rounded-lg overflow-hidden mb-4 flex items-center justify-center" aria-hidden="true">
+              <div className="bg-white p-4 rounded-lg w-full h-full flex items-center justify-center">
+                <Image
+                  src="/assets/images/tracking.png"
+                  alt="Real-time Volunteer Tracking"
+                  width={180}
+                  height={96}
+                  className="max-w-full max-h-full object-contain"
+                />
+              </div>
             </div>
             <div className="flex items-center gap-4 mb-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-brand-blue text-white">
@@ -57,16 +61,18 @@ export default function Features() {
             <p className="text-black text-sm mt-auto">{t('feature.tracking.desc')}</p>
           </div>
 
+          {/** MULTI-LANGUAGE SUPPORT FEATURE */}
           <div className="bg-white shadow-lg rounded-2xl p-8 flex flex-col items-start h-full feature-card" role="listitem">
-            <div className="w-full h-40 bg-gray-50 rounded-lg overflow-hidden mb-4 flex items-center justify-center" aria-hidden="true">
-              <svg width="180" height="96" viewBox="0 0 180 96" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-80">
-                <rect width="180" height="96" rx="8" fill="#F3F4F6" />
-                <g transform="translate(16,18)" fill="#E5E7EB">
-                  <rect x="0" y="0" width="44" height="44" rx="6" />
-                  <rect x="54" y="0" width="110" height="44" rx="6" />
-                  <rect x="0" y="52" width="164" height="12" rx="6" />
-                </g>
-              </svg>
+            <div className="w-full h-56 bg-gray-50 rounded-lg overflow-hidden mb-4 flex items-center justify-center" aria-hidden="true">
+              <div className="bg-white p-4 rounded-lg w-full h-full flex items-center justify-center">
+                <Image
+                  src="/assets/images/language.png"
+                  alt="Multi-language Support"
+                  width={180}
+                  height={96}
+                  className="max-w-full max-h-full object-contain"
+                />
+              </div>
             </div>
             <div className="flex items-center gap-4 mb-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-brand-gold text-black">
@@ -80,16 +86,18 @@ export default function Features() {
             <p className="text-black text-sm mt-auto">{t('feature.multi.desc')}</p>
           </div>
 
+          {/** OFFLINE MAPS FEATURE */}
           <div className="bg-white shadow-lg rounded-2xl p-8 flex flex-col items-start h-full feature-card" role="listitem">
-            <div className="w-full h-40 bg-gray-50 rounded-lg overflow-hidden mb-4 flex items-center justify-center" aria-hidden="true">
-              <svg width="180" height="96" viewBox="0 0 180 96" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-80">
-                <rect width="180" height="96" rx="8" fill="#F3F4F6" />
-                <g transform="translate(16,18)" fill="#E5E7EB">
-                  <rect x="0" y="0" width="44" height="44" rx="6" />
-                  <rect x="54" y="0" width="110" height="44" rx="6" />
-                  <rect x="0" y="52" width="164" height="12" rx="6" />
-                </g>
-              </svg>
+            <div className="w-full h-56 bg-gray-50 rounded-lg overflow-hidden mb-4 flex items-center justify-center" aria-hidden="true">
+              <div className="bg-white p-4 rounded-lg w-full h-full flex items-center justify-center">
+                <Image
+                  src="/assets/images/map.png"
+                  alt="Offline Maps"
+                  width={180}
+                  height={96}
+                  className="max-w-full max-h-full object-contain"
+                />
+              </div>
             </div>
             <div className="flex items-center gap-4 mb-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-brand-gold text-black">
@@ -103,16 +111,18 @@ export default function Features() {
             <p className="text-black text-sm mt-auto">{t('feature.offline.desc')}</p>
           </div>
 
+          {/** COMMUNITY CHAT FEATURE */}
           <div className="bg-white shadow-lg rounded-2xl p-8 flex flex-col items-start h-full feature-card" role="listitem">
-            <div className="w-full h-40 bg-gray-50 rounded-lg overflow-hidden mb-4 flex items-center justify-center" aria-hidden="true">
-              <svg width="180" height="96" viewBox="0 0 180 96" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-80">
-                <rect width="180" height="96" rx="8" fill="#F3F4F6" />
-                <g transform="translate(16,18)" fill="#E5E7EB">
-                  <rect x="0" y="0" width="44" height="44" rx="6" />
-                  <rect x="54" y="0" width="110" height="44" rx="6" />
-                  <rect x="0" y="52" width="164" height="12" rx="6" />
-                </g>
-              </svg>
+            <div className="w-full h-56 bg-gray-50 rounded-lg overflow-hidden mb-4 flex items-center justify-center" aria-hidden="true">
+              <div className="bg-white p-4 rounded-lg w-full h-full flex items-center justify-center">
+                <Image
+                  src="/assets/images/chat.png"
+                  alt="Community Chat"
+                  width={180}
+                  height={96}
+                  className="max-w-full max-h-full object-contain invert-colors"
+                />
+              </div>
             </div>
             <div className="flex items-center gap-4 mb-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-brand-blue text-white">
@@ -126,16 +136,18 @@ export default function Features() {
             <p className="text-black text-sm mt-auto">{t('feature.chat.desc')}</p>
           </div>
 
+          {/** SAFE ZONE ALERTS FEATURE */}
           <div className="bg-white shadow-lg rounded-2xl p-8 flex flex-col items-start h-full feature-card" role="listitem">
-            <div className="w-full h-40 bg-gray-50 rounded-lg overflow-hidden mb-4 flex items-center justify-center" aria-hidden="true">
-              <svg width="180" height="96" viewBox="0 0 180 96" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-80">
-                <rect width="180" height="96" rx="8" fill="#F3F4F6" />
-                <g transform="translate(16,18)" fill="#E5E7EB">
-                  <rect x="0" y="0" width="44" height="44" rx="6" />
-                  <rect x="54" y="0" width="110" height="44" rx="6" />
-                  <rect x="0" y="52" width="164" height="12" rx="6" />
-                </g>
-              </svg>
+            <div className="w-full h-56 bg-gray-50 rounded-lg overflow-hidden mb-4 flex items-center justify-center" aria-hidden="true">
+              <div className="bg-white p-4 rounded-lg w-full h-full flex items-center justify-center">
+                <Image
+                  src="/assets/images/safe.png"
+                  alt="Safe Zone Alerts"
+                  width={180}
+                  height={96}
+                  className="max-w-full max-h-full object-contain invert-colors"
+                />
+              </div>
             </div>
             <div className="flex items-center gap-4 mb-4">
               <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-brand-orange text-white">
@@ -153,7 +165,7 @@ export default function Features() {
       <style>{`
         @media (min-width: 900px) {
           .features-grid .feature-card {
-            min-height: 360px !important;
+            min-height: 420px !important;
           }
         }
       `}</style>

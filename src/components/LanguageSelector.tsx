@@ -6,19 +6,13 @@ import { useTranslation } from "../lib/i18n";
 export default function LanguageSelector() {
   const { locale, setLocale } = useTranslation();
   return (
-    <div className="relative" style={{ zIndex: 99999 }}>
+    <div className="relative z-[99999]">
       <select
         value={locale}
         onChange={(e) => setLocale(e.target.value as Locale)}
-        className="ml-2 border rounded px-2 py-1 text-sm"
+        className="ml-2 border rounded px-2 py-1 text-sm relative z-[99999] max-h-[180px] overflow-y-auto"
         aria-label="Select language"
         data-cursor="black"
-        style={{
-          zIndex: 99999,
-          position: "relative",
-          maxHeight: "180px",
-          overflowY: "auto",
-        }}
       >
       <option value="en">EN</option>
       <option value="hi">HI</option>

@@ -1,10 +1,12 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "../lib/i18n";
 import Image from "next/image";
 
 export default function Hero() {
   const { t } = useTranslation();
+  const [isHighContrast, setIsHighContrast] = useState(false);
+  
   // set CSS variable --header-height so hero can fill the remaining viewport
   useEffect(() => {
     function setHeaderHeight() {
@@ -16,6 +18,21 @@ export default function Hero() {
     window.addEventListener('resize', setHeaderHeight);
     return () => window.removeEventListener('resize', setHeaderHeight);
   }, []);
+
+  // Detect high contrast mode
+  useEffect(() => {
+    const checkHighContrast = () => {
+      setIsHighContrast(document.body.classList.contains('high-contrast'));
+    };
+    
+    checkHighContrast();
+    
+    // Listen for changes to the body class
+    const observer = new MutationObserver(checkHighContrast);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    
+    return () => observer.disconnect();
+  }, []);
   return (
   <section id="hero" className="relative flex flex-col items-center justify-center py-16 md:py-24 lg:py-32 text-center bg-gradient-to-br from-[#FFF9F0] via-[#FFF4E6] to-[#FFF9F0] overflow-hidden" aria-label="Hero section">
       {/* Sacred geometry animated background (SVG) */}
@@ -26,7 +43,7 @@ export default function Hero() {
       </svg>
 
       {/* Abstract blobs (Luxe accent) */}
-      <svg className="hero-blob absolute pointer-events-none" width="800" height="600" viewBox="0 0 800 600" aria-hidden="true" style={{right: '-5%', top: '15%'}}>
+  <svg className="hero-blob absolute pointer-events-none -right-5 top-[15%]" width="800" height="600" viewBox="0 0 800 600" aria-hidden="true">
         <defs>
           <linearGradient id="g1" x1="0" x2="1">
             <stop offset="0%" stopColor="#4CE687" stopOpacity="0.12" />
@@ -41,7 +58,7 @@ export default function Hero() {
           <ellipse cx="520" cy="340" rx="140" ry="100" fill="#FFD23F" fillOpacity="0.04" />
         </g>
       </svg>
-  <div className="relative z-10 w-full" style={{pointerEvents: 'auto'}}>
+  <div className="relative z-10 w-full pointer-events-auto">
         <div className="site-container grid grid-cols-1 md:grid-cols-12 gap-8 items-center px-6">
         <div className="md:col-span-6 lg:col-span-7 text-center md:text-left">
           <h1 className="font-montserrat font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 3xl:text-8xl text-black mb-6 leading-tight">
@@ -71,7 +88,14 @@ export default function Hero() {
               aria-label="Download for Android"
             >
               {/* Android icon */}
-              <Image src="/assets/images/android.png" alt="" width={18} height={18} className="flex-shrink-0" aria-hidden />
+              <Image 
+                src="/assets/images/android.png" 
+                alt="" 
+                width={18} 
+                height={18} 
+                className={`flex-shrink-0 ${isHighContrast ? 'android-logo-hc' : ''}`} 
+                aria-hidden 
+              />
               <span className="sr-only">Android</span>
               <span>{t('download.android') ?? 'Download for Android'}</span>
             </a>
@@ -90,8 +114,8 @@ export default function Hero() {
           </div>
           {/* Floating badges for social proof */}
       <div className="floating-badges">
-        <div className="floating-badge">Target: 2,000+ volunteers</div>
-        <div className="floating-badge">Target: 10,000 people</div>
+        <div className="floating-badge">{t('hero.target.volunteers')}</div>
+        <div className="floating-badge">{t('hero.target.people')}</div>
       </div>
           </div>
         {/* Hero illustration */}

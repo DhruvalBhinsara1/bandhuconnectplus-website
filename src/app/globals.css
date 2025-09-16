@@ -104,9 +104,23 @@ body.high-contrast a, body.high-contrast button {
   outline-color: var(--hc-accent);
 }
 
+/* Fallback: catch utility classes that embed colors (e.g. text-black, bg-[#fff]) and normalize them
+   to the HC foreground/background so arbitrary generated Tailwind classes also respect HC mode.
+   We intentionally exclude known accent/background utility classes so CTAs remain visible. */
+body.high-contrast [class*="text-"]:not(.accent-highlight):not(.text-accent) {
+  color: var(--hc-foreground) !important;
+}
+body.high-contrast [class*="bg-"]:not(.bg-accent):not(.bg-transparent):not(.floating-badge):not(.hero-illustration) {
+  background-color: var(--hc-background) !important;
+}
+
 /* Focused high-contrast overrides for common utility classes (minimal, targeted) */
 body.high-contrast .bg-white {
   background-color: var(--hc-background) !important;
+}
+/* Keep feature image backgrounds white in high contrast mode for visibility */
+body.high-contrast .feature-card .bg-white {
+  background-color: #ffffff !important;
 }
 body.high-contrast .text-black,
 body.high-contrast .text-gray-900,
@@ -137,12 +151,46 @@ body.high-contrast :focus {
   border-color: var(--hc-accent) !important;
 }
 
+/* Add borders between sections in high contrast mode for better visual separation */
+body.high-contrast main > section:not(#hero),
+body.high-contrast main > div:not(:first-child) {
+  border-top: 2px solid var(--hc-accent) !important;
+}
+
+/* Invert Android logo to white in high contrast mode */
+.android-logo-hc {
+  filter: invert(1) brightness(2) !important;
+}
+
+/* Add visible borders to cards in high contrast mode */
+body.high-contrast .bg-white.shadow,
+body.high-contrast .bg-white.shadow-lg,
+body.high-contrast .bg-white.rounded-lg,
+body.high-contrast .bg-white.rounded-2xl,
+body.high-contrast .shadow.rounded-lg,
+body.high-contrast .shadow-lg.rounded-2xl,
+body.high-contrast .feature-card,
+body.high-contrast .floating-badge {
+  border: 2px solid var(--hc-accent) !important;
+  box-shadow: none !important;
+}
+
+/* Fix floating badge background in high contrast mode */
+body.high-contrast .floating-badge {
+  background: var(--hc-background) !important;
+  color: var(--hc-foreground) !important;
+}
+
+/* Add borders to download buttons in high contrast mode */
+body.high-contrast a[data-cursor="black"] {
+  border: 2px solid var(--hc-accent) !important;
+}
+
 /* High-contrast overrides for hero, selects, and Why section */
 /* Keep section backgrounds transparent where possible and only swap text and small UI elements.
    This prevents large black rectangles while ensuring readable text and controls. */
 body.high-contrast #hero .site-container h1,
 body.high-contrast #hero .site-container p,
-body.high-contrast #hero .floating-badge,
 body.high-contrast #hero .floating-badges,
 body.high-contrast #hero .w-full.rounded-2xl .text-sm {
   color: var(--hc-foreground) !important;
@@ -161,6 +209,34 @@ body.high-contrast #hero .hero-blob ellipse,
 body.high-contrast #hero .hero-blob {
   fill: transparent !important;
   opacity: 0.25 !important;
+}
+
+/* Stronger, more specific hero overrides to ensure text has sufficient contrast
+   against the (now dark) HC background. We add slight translucent backing to
+   multi-line headings and paragraph blocks to avoid text disappearing behind
+   decorative gradients or images. Also remove reduced opacity utilities that
+   Tailwind may apply (like opacity-10 / opacity-20) by forcing opacity:1. */
+body.high-contrast #hero,
+body.high-contrast #hero * {
+  color: var(--hc-foreground) !important;
+  opacity: 1 !important;
+}
+
+/* Add a subtle translucent dark overlay behind large hero text to lift it
+   off busy backgrounds. Kept small so it doesn't create large black boxes. */
+body.high-contrast #hero .site-container h1,
+body.high-contrast #hero .site-container p {
+  background: rgba(0,0,0,0.28) !important;
+  border-radius: 4px !important;
+  line-height: 1.05 !important;
+}
+
+/* Make the hero backplate stronger to guarantee WCAG-compliant contrast */
+body.high-contrast #hero .site-container h1 {
+  background: rgba(0,0,0,0.48) !important;
+}
+body.high-contrast #hero .site-container p {
+  background: rgba(0,0,0,0.36) !important;
 }
 
 /* Ensure native selects and their options are visible in HC mode */
@@ -183,6 +259,68 @@ body.high-contrast .why-section .why-col {
 
 body.high-contrast .why-section h3 {
   color: var(--hc-accent) !important;
+}
+
+/* Stronger overrides for the Why section: force full opacity and add small
+   text backplates for multi-line paragraphs so they remain readable on top of
+   any faint background textures or overlays. This avoids large full-section
+   recolors while ensuring accessibility. */
+body.high-contrast .why-section,
+body.high-contrast .why-section * {
+  color: var(--hc-foreground) !important;
+  opacity: 1 !important;
+}
+
+/* Ensure the section title is readable: add a prominent backplate for the H2
+   and ensure the inline styles (color: #212121) are overridden in HC mode. */
+body.high-contrast .why-section h2 {
+  color: var(--hc-foreground) !important;
+  background: rgba(0,0,0,0.54) !important;
+  border-radius: 6px !important;
+  display: inline-block !important;
+}
+
+/* Keep h3 highlighted with the HC accent but ensure it's visible */
+body.high-contrast .why-section h3 {
+  color: var(--hc-accent) !important;
+  background: transparent !important;
+}
+
+/* Prevent hero backplates from visually overflowing into following sections by ensuring
+   backplates have limited width and don't create a persistent background layer. */
+body.high-contrast #hero .site-container h1,
+body.high-contrast #hero .site-container p {
+  display: inline-block !important;
+  max-width: 100% !important;
+}
+
+body.high-contrast .why-section .why-col p {
+  background: rgba(0,0,0,0.18) !important;
+  border-radius: 4px !important;
+}
+
+/* Slightly stronger backing for Why section paragraphs to improve readability */
+body.high-contrast .why-section .why-col p {
+  background: rgba(0,0,0,0.30) !important;
+}
+
+/* Ensure accent highlights use HC accent color and remain readable */
+body.high-contrast .accent-highlight {
+  color: var(--hc-accent) !important;
+  background: transparent !important;
+}
+
+/* Floating badges should stay legible in HC mode */
+body.high-contrast .floating-badge {
+  background: var(--hc-background) !important;
+  color: var(--hc-foreground) !important;
+  box-shadow: none !important;
+}
+
+/* Hide custom site cursor on touch/coarse-pointer devices (mobile) */
+@media (pointer: coarse), (hover: none) {
+  #site-cursor { display: none !important; }
+  body.use-site-cursor { cursor: auto !important; }
 }
 
 .content-centered {
@@ -224,6 +362,60 @@ body.high-contrast .why-section h3 {
   background: var(--brand-orange);
 }
 
+/* WhyBandhuConnect global layout styles (moved from component) */
+.why-section {
+  background: #f9fafb;
+}
+.why-bandhu-grid {
+  box-sizing: border-box;
+}
+.why-bandhu-grid > .why-col {
+  background: transparent;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  border-radius: 0;
+  background-image: none;
+}
+.why-bandhu-grid > .why-col * {
+  background: transparent;
+}
+
+/* Responsive: collapse grid to single column on smaller screens */
+@media (max-width: 900px) {
+  .why-bandhu-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    justify-items: center;
+  }
+  .why-bandhu-grid > .why-col {
+    align-items: center;
+    text-align: center;
+    padding-left: 8vw;
+    padding-right: 8vw;
+    width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .why-bandhu-grid {
+    gap: 32px;
+  }
+  .why-bandhu-grid > .why-col {
+    padding-left: 4vw;
+    padding-right: 4vw;
+  }
+  .why-bandhu-grid h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+  }
+  .why-bandhu-grid h3 {
+    font-size: 1.08rem;
+    margin-bottom: 10px;
+  }
+  .why-bandhu-grid p {
+    font-size: 0.98rem;
+  }
+}
+
 /* cursor color variants */
 .cursor-orange #site-cursor { background: var(--brand-orange); }
 .cursor-blue #site-cursor { background: var(--brand-blue); }
@@ -250,6 +442,30 @@ body.high-contrast .why-section h3 {
    for small adjustments; heavy RTL support will require layout-specific fixes. */
 html[dir="rtl"] {
   direction: rtl;
+}
+
+/* Invert colors for specific black icons only in high contrast mode */
+body.high-contrast .invert-colors {
+  filter: invert(1);
+}
+
+/* High contrast overrides for header colorful elements */
+body.high-contrast #site-header {
+  background: var(--hc-background) !important;
+  border-color: var(--hc-accent) !important;
+}
+body.high-contrast #site-header a {
+  color: var(--hc-foreground) !important;
+}
+body.high-contrast #site-header .text-brand-blue {
+  color: var(--hc-foreground) !important;
+}
+body.high-contrast #site-header .bg-gradient-to-r {
+  background: var(--hc-background) !important;
+}
+body.high-contrast #mobile-nav {
+  background: var(--hc-background) !important;
+  border-color: var(--hc-accent) !important;
 }
 html[dir="rtl"] .text-left { text-align: right; }
 html[dir="rtl"] .text-right { text-align: left; }
