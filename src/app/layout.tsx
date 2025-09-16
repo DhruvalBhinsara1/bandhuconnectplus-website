@@ -1,17 +1,20 @@
 "use client";
 import React, { useEffect } from "react";
 import { I18nProvider } from "../lib/i18n";
+import LoadingScreen from "../components/LoadingScreen";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: 'swap',
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: 'swap',
 });
 
 
@@ -46,94 +49,29 @@ export default function RootLayout({
       }
     } catch {}
 
-    const cursorMap = [
-      // invert mapping: dark text/background -> orange cursor; brand orange/gold -> black cursor
-      {
-        classNames: ['text-black', 'bg-black'],
-        className: 'cursor-orange',
-      },
-      { classNames: ['bg-[#4A90E2]', 'text-[#4A90E2]'], className: 'cursor-blue' },
-      {
-        classNames: ['bg-[#FF6B35]', 'text-[#FF6B35]', 'bg-[#FFD23F]', 'text-[#FFD23F]'],
-        className: 'cursor-black',
-      },
-    ];
+    // site-cursor behavior and class mapping moved to `src/lib/siteCursor` to reduce initial bundle size
 
-    function closestWithClass(start: HTMLElement | null, classNames: string[]) {
-      let node: HTMLElement | null = start;
-      while (node) {
-        if (node.classList) {
-          for (const cls of classNames) {
-            if (node.classList.contains(cls)) return node;
-          }
-        }
-        node = node.parentElement;
+    // Defer site-cursor initialization to a dynamically imported module to
+    // reduce initial bundle size. The module returns a cleanup function.
+    let cleanup: (() => void) | null = null;
+    import('../lib/siteCursor').then((mod) => {
+      try {
+        cleanup = mod.initSiteCursor();
+      } catch {
+        cleanup = null;
       }
-      return null;
-    }
-
-    // throttle updates via requestAnimationFrame
-    let rafId: number | null = null;
-  function updateCursorForTarget(target: HTMLElement | null, x?: number, y?: number) {
-      // prefer explicit data-cursor attribute on target or ancestors
-      const elWithAttr = target ? target.closest('[data-cursor]') as HTMLElement | null : null;
-      const siteCursor = typeof document !== 'undefined' ? document.getElementById('site-cursor') : null;
-      if (elWithAttr && elWithAttr.dataset && elWithAttr.dataset.cursor) {
-        const val = elWithAttr.dataset.cursor;
-        document.body.classList.remove('cursor-orange', 'cursor-blue', 'cursor-yellow', 'cursor-black');
-        document.body.classList.add(`cursor-${val}`);
-        if (siteCursor && typeof x === 'number' && typeof y === 'number') {
-          siteCursor.style.left = `${x}px`;
-          siteCursor.style.top = `${y}px`;
-        }
-        return;
-      }
-
-      let applied = false;
-      for (const { classNames, className } of cursorMap) {
-        const el = closestWithClass(target, classNames);
-        if (el) {
-          document.body.classList.remove('cursor-orange', 'cursor-blue', 'cursor-yellow', 'cursor-black');
-          document.body.classList.add(className);
-          applied = true;
-          break;
-        }
-      }
-
-      if (!applied) {
-        document.body.classList.remove('cursor-blue', 'cursor-yellow', 'cursor-black');
-        document.body.classList.add('cursor-orange');
-      }
-
-      if (siteCursor && typeof x === 'number' && typeof y === 'number') {
-        siteCursor.style.left = `${x}px`;
-        siteCursor.style.top = `${y}px`;
-      }
-    }
-
-    function handleMouseMove(e: MouseEvent) {
-      let target = e.target as HTMLElement | null;
-      if (target && target.nodeType !== 1) target = target.parentElement as HTMLElement | null;
-
-      const x = (e as MouseEvent).clientX;
-      const y = (e as MouseEvent).clientY;
-
-      if (rafId !== null) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => {
-        updateCursorForTarget(target, x, y);
-        rafId = null;
-      });
-    }
-    // enable the visual site-cursor and hide native cursor
-    document.body.classList.add('use-site-cursor');
-    document.body.classList.add('cursor-orange');
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    }).catch(() => {
+      // silent failure; cursor is an enhancement only
+    });
+    return () => {
+      if (cleanup) cleanup();
+    };
   }, []);
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <div id="site-cursor" aria-hidden="true"></div>
+  <div id="site-cursor" aria-hidden="true"></div>
+  <LoadingScreen />
         {/* ARIA live region for announcements (language changes already announced in I18nProvider) */}
         <div id="a11y-announcer" aria-live="polite" className="sr-only"></div>
         <I18nProvider>{children}</I18nProvider>

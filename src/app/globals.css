@@ -19,11 +19,16 @@
 
 html {
   scroll-behavior: smooth;
+  /* Ensure in-page anchor targets are not hidden behind the sticky header. Adjust --header-height if header size changes. */
+  --header-height: 56px; /* tuned to match header minHeight */
+  scroll-padding-top: var(--header-height);
 }
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  /* Prevent layout shifts during font loading */
+  font-display: swap;
 }
 
 /* Skip link: visible when focused to allow keyboard users to jump to main content */
@@ -73,8 +78,54 @@ html[lang="ml"] body {
   font-family: 'Noto Sans Malayalam', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 
-/* When the site-cursor visual layer is active, hide the native system cursor to avoid duplicates */
-body.use-site-cursor { cursor: none !important; }
+/* When the site-cursor visual layer is active, hide the native system cursor to avoid duplicates.
+   We hide the cursor globally but keep the native cursor for form controls and contenteditable areas
+   so text selection and pointer-target affordances remain correct. If a component explicitly
+   requires the native cursor (for complex drag handles, file inputs, etc.) add the class
+   `use-native-cursor` to that element or a wrapper to opt-out. */
+
+/* Hide native cursor on all elements while the site visual cursor is active.
+   Many browsers apply a pointer/default cursor on anchors and buttons by
+   default, so we target all descendants to avoid duplicate cursors. Exceptions
+   below restore the native cursor for text controls and contenteditable areas. */
+body.use-site-cursor,
+body.use-site-cursor * {
+  cursor: none !important;
+}
+
+/* Explicitly cover common interactive elements and their states which may be
+   styled by other libraries or browser stylesheets (pointer on buttons/anchors). */
+body.use-site-cursor a,
+body.use-site-cursor a *,
+body.use-site-cursor a:hover,
+body.use-site-cursor a:active,
+body.use-site-cursor a:focus,
+body.use-site-cursor button,
+body.use-site-cursor button *,
+body.use-site-cursor button:hover,
+body.use-site-cursor button:active,
+body.use-site-cursor button:focus,
+body.use-site-cursor [role="button"],
+body.use-site-cursor [role="button"] *,
+body.use-site-cursor [role="button"]:hover,
+body.use-site-cursor [role="button"]:active,
+body.use-site-cursor [role="button"]:focus {
+  cursor: none !important;
+}
+
+/* Preserve native cursor on interactive text/select controls and contenteditable regions */
+body.use-site-cursor input,
+body.use-site-cursor textarea,
+body.use-site-cursor select,
+body.use-site-cursor [contenteditable="true"] {
+  cursor: auto !important;
+}
+
+/* Allow explicit opt-out for elements that must show the native cursor */
+body.use-site-cursor .use-native-cursor,
+body.use-site-cursor .use-native-cursor * {
+  cursor: auto !important;
+}
 
 /* Wide site container: centers content with generous max width for desktop */
 .site-container {
@@ -329,6 +380,25 @@ body.high-contrast .floating-badge {
   margin-right: auto;
 }
 
+/* Responsive tweaks for header and hero */
+@media (max-width: 768px) {
+  html { --header-height: 52px; }
+  /* make hero less tall on small screens so image remains prominent */
+  #hero { padding-top: 3rem; padding-bottom: 3rem; }
+  .site-container { padding-left: 1rem; padding-right: 1rem; }
+}
+
+@media (min-width: 769px) {
+  html { --header-height: 56px; }
+}
+
+/* Ensure hero illustration container centers and doesn't overflow */
+.site-container .w-full.rounded-2xl.overflow-hidden {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .accent-highlight {
   color: var(--accent);
 }
@@ -360,6 +430,41 @@ body.high-contrast .floating-badge {
   z-index: 99999;
   box-shadow: 0 6px 18px rgba(0,0,0,0.12);
   background: var(--brand-orange);
+}
+
+/* Hamburger to X micro-animation */
+.hamburger {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 18px;
+  height: 14px;
+}
+.hamburger .bar {
+  display: block;
+  height: 2px;
+  width: 18px;
+  background: #FF6B35;
+  border-radius: 2px;
+  transition: transform 180ms cubic-bezier(.2,.9,.2,1), opacity 120ms linear, background 120ms;
+  transform-origin: center;
+}
+.hamburger.open .bar:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.hamburger.open .bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0.2);
+}
+.hamburger.open .bar:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hamburger .bar {
+    transition: none;
+  }
 }
 
 /* WhyBandhuConnect global layout styles (moved from component) */
@@ -416,11 +521,23 @@ body.high-contrast .floating-badge {
   }
 }
 
-/* cursor color variants */
-.cursor-orange #site-cursor { background: var(--brand-orange); }
-.cursor-blue #site-cursor { background: var(--brand-blue); }
-.cursor-black #site-cursor { background: #000; }
-.cursor-yellow #site-cursor { background: var(--brand-gold); }
+/* custom site cursor: use white with mix-blend-mode to invert underlying colors
+  This provides a subtle invert effect rather than fixed orange/black colors. */
+.site-cursor-enabled #site-cursor {
+  width: 28px;
+  height: 28px;
+  border-radius: 9999px;
+  background: #fff;
+  mix-blend-mode: difference;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* Keep the variant classes for backward compatibility but they now only
+  control an outline color so authors can keep visual identity if desired. */
+.cursor-orange #site-cursor { outline: 2px solid var(--brand-orange); }
+.cursor-blue #site-cursor { outline: 2px solid var(--brand-blue); }
+.cursor-black #site-cursor { outline: 2px solid #000; }
+.cursor-yellow #site-cursor { outline: 2px solid var(--brand-gold); }
 
 /* Locale transition helper: fade content when language changes */
 .locale-fade-enter {
@@ -470,3 +587,36 @@ body.high-contrast #mobile-nav {
 html[dir="rtl"] .text-left { text-align: right; }
 html[dir="rtl"] .text-right { text-align: left; }
 html[dir="rtl"] .pl-\[1rem\] { padding-left: 0; padding-right: 1rem; }
+
+/* Protect the header from unexpectedly large children (logo, CTAs, etc.)
+   This ensures the sticky header retains a predictable height and that
+   the hero measurement (which depends on --header-height) remains stable. */
+/* Remove border and box-shadow from header for a clean look */
+#site-header {
+  --site-header-h: 56px; /* default header height used for layout calculations */
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+@media (min-width: 768px) {
+  #site-header { --site-header-h: 56px; }
+}
+@media (min-width: 1200px) {
+  #site-header { --site-header-h: 64px; }
+}
+
+#site-header .site-container {
+  min-height: var(--site-header-h);
+  height: var(--site-header-h);
+  align-items: center; /* center inline content vertically */
+}
+
+/* Constrain the logo and CTA sizes so they can't force the header taller */
+#site-header img {
+  max-height: calc(var(--site-header-h) - 8px);
+  height: auto;
+  width: auto;
+}
+
+/* If a layout still tries to expand the header (e.g. focus outlines), keep overflow hidden */
+#site-header { overflow: visible; }
+

@@ -1,8 +1,15 @@
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-16 bg-[#FFD23F]/10 rounded-xl" aria-label="How It Works section">
-  <h2 className="font-montserrat font-extrabold text-3xl text-black mb-8 text-center drop-shadow">How It Works</h2>
-      <div className="flex flex-col md:flex-row gap-8 items-center justify-center">
+    <section
+      id="how-it-works"
+      className="bg-[#FFD23F]/10 rounded-xl"
+      aria-label="How It Works section"
+      style={{ minHeight: 'calc(100vh - var(--header-height, 64px))' }}
+    >
+      <div className="w-full site-container flex items-center justify-center py-8 md:py-12">
+        <div className="w-full">
+          <h2 className="font-montserrat font-extrabold text-3xl text-black mb-8 text-center drop-shadow">How It Works</h2>
+          <div className="flex flex-col md:flex-row gap-8 items-center justify-center">
         {/* Step-by-step timeline with SVG icons */}
         <div className="flex flex-col gap-6">
           <div className="flex items-center gap-4">
@@ -31,12 +38,14 @@ export default function HowItWorks() {
           </div>
         </div>
         {/* Volunteer onboarding card with SVG */}
-        <div className="bg-white shadow rounded-lg p-6 mt-8 md:mt-0 flex flex-col items-center">
+  <div className="bg-white shadow rounded-lg p-8 mt-8 md:mt-0 flex flex-col items-center justify-center md:min-h-[260px]">
           <span className="mb-2" aria-hidden="true">
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="20" fill="#FFD23F"/><path d="M20 14a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm0 10c-4 0-8 2-8 4v2h16v-2c0-2-4-4-8-4z" fill="#fff"/></svg>
           </span>
           <h3 className="font-bold text-xl mb-2 text-black">Volunteer Onboarding</h3>
           <p className="text-black text-center font-medium">Sign up, get verified, and start helping pilgrims in need.</p>
+        </div>
+          </div>
         </div>
       </div>
     </section>

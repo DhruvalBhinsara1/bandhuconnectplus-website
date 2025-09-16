@@ -61,11 +61,9 @@
   "faq.q2.title": "Is my data private?",
   "faq.q2.answer": "Yes. Data is transmitted over HTTPS, stored in Supabase with row-level security, and used only to coordinate help per our privacy policy.",
   "faq.q3.title": "Which languages are supported?",
-  "faq.q3.answer": "Hindi and English in the current production build; more regional languages are planned for future releases.",
+  "faq.q3.answer": "హిందీ మరియు ఇంగ్లీష్ మొదటి విడుదల కోసం ప్రణాళికలో ఉన్నాయి; భవిష్యత్తు నవీకరణల్లో మరిన్ని భాషలు జోడించబడతాయి.",
   "faq.q4.title": "Do I need internet to use the app?",
-  "faq.q4.answer": "Core features like requesting help and cached maps have limited offline capability, but real-time tracking, chat, and live volunteer coordination require an internet connection.",
-    "faq.q5.title": "What is the FAQ?",
-  "faq.q5.answer": "This is a frequently asked questions section to help users with common inquiries.",
+  "faq.q4.answer": "ఆఫ్‌లైన్ మద్దతు ప్రణాళికలో ఉంది, కానీ ప్రారంభ విడుదలలో ఎక్కువ ఫీచర్లకు ఇంటర్నెట్ అవసరం అవుతుంది.",
 
   "story.title": "BandhuConnect+ ఎందుకు?",
   "story.pilgrims.title": "తీర్థయాత్రికులకు ఈ యాప్ ఎందుకు అవసరం",

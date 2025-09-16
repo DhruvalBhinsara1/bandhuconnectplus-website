@@ -1,6 +1,5 @@
 "use client";
 import { useTranslation } from "../lib/i18n";
-import Image from "next/image";
 
 export default function Features() {
   const { t } = useTranslation();
@@ -15,13 +14,11 @@ export default function Features() {
             {/* Emergency Aid Request Image */}
             <div className="w-full h-56 bg-gray-50 rounded-lg overflow-hidden mb-4 flex items-center justify-center" aria-hidden="true">
               <div className="bg-white p-4 rounded-lg w-full h-full flex items-center justify-center">
-                <Image
-                  src="/assets/images/emergency.png"
-                  alt="Emergency Aid Request"
-                  width={180}
-                  height={96}
-                  className="max-w-full max-h-full object-contain"
-                />
+                <picture>
+                  <source srcSet="/assets/images/optimized/emergency-768.avif" type="image/avif" />
+                  <source srcSet="/assets/images/optimized/emergency-768.webp" type="image/webp" />
+                  <img src="/assets/images/optimized/emergency-768.jpeg" alt="Emergency Aid Request" width={180} height={96} className="max-w-full max-h-full object-contain" loading="lazy" />
+                </picture>
               </div>
             </div>
             <div className="flex items-center gap-4 mb-4">
@@ -40,13 +37,11 @@ export default function Features() {
           <div className="bg-white shadow-lg rounded-2xl p-8 flex flex-col items-start h-full feature-card" role="listitem">
             <div className="w-full h-56 bg-gray-50 rounded-lg overflow-hidden mb-4 flex items-center justify-center" aria-hidden="true">
               <div className="bg-white p-4 rounded-lg w-full h-full flex items-center justify-center">
-                <Image
-                  src="/assets/images/tracking.png"
-                  alt="Real-time Volunteer Tracking"
-                  width={180}
-                  height={96}
-                  className="max-w-full max-h-full object-contain"
-                />
+                <picture>
+                  <source srcSet="/assets/images/optimized/tracking-768.avif" type="image/avif" />
+                  <source srcSet="/assets/images/optimized/tracking-768.webp" type="image/webp" />
+                  <img src="/assets/images/optimized/tracking-768.jpeg" alt="Real-time Volunteer Tracking" width={180} height={96} className="max-w-full max-h-full object-contain" loading="lazy" />
+                </picture>
               </div>
             </div>
             <div className="flex items-center gap-4 mb-4">
@@ -65,13 +60,11 @@ export default function Features() {
           <div className="bg-white shadow-lg rounded-2xl p-8 flex flex-col items-start h-full feature-card" role="listitem">
             <div className="w-full h-56 bg-gray-50 rounded-lg overflow-hidden mb-4 flex items-center justify-center" aria-hidden="true">
               <div className="bg-white p-4 rounded-lg w-full h-full flex items-center justify-center">
-                <Image
-                  src="/assets/images/language.png"
-                  alt="Multi-language Support"
-                  width={180}
-                  height={96}
-                  className="max-w-full max-h-full object-contain"
-                />
+                <picture>
+                  <source srcSet="/assets/images/optimized/language-768.avif" type="image/avif" />
+                  <source srcSet="/assets/images/optimized/language-768.webp" type="image/webp" />
+                  <img src="/assets/images/optimized/language-768.jpeg" alt="Multi-language Support" width={180} height={96} className="max-w-full max-h-full object-contain" loading="lazy" />
+                </picture>
               </div>
             </div>
             <div className="flex items-center gap-4 mb-4">
@@ -90,13 +83,11 @@ export default function Features() {
           <div className="bg-white shadow-lg rounded-2xl p-8 flex flex-col items-start h-full feature-card" role="listitem">
             <div className="w-full h-56 bg-gray-50 rounded-lg overflow-hidden mb-4 flex items-center justify-center" aria-hidden="true">
               <div className="bg-white p-4 rounded-lg w-full h-full flex items-center justify-center">
-                <Image
-                  src="/assets/images/map.png"
-                  alt="Offline Maps"
-                  width={180}
-                  height={96}
-                  className="max-w-full max-h-full object-contain"
-                />
+                <picture>
+                  <source srcSet="/assets/images/optimized/map-768.avif" type="image/avif" />
+                  <source srcSet="/assets/images/optimized/map-768.webp" type="image/webp" />
+                  <img src="/assets/images/optimized/map-768.jpeg" alt="Offline Maps" width={180} height={96} className="max-w-full max-h-full object-contain" loading="lazy" />
+                </picture>
               </div>
             </div>
             <div className="flex items-center gap-4 mb-4">
@@ -115,13 +106,11 @@ export default function Features() {
           <div className="bg-white shadow-lg rounded-2xl p-8 flex flex-col items-start h-full feature-card" role="listitem">
             <div className="w-full h-56 bg-gray-50 rounded-lg overflow-hidden mb-4 flex items-center justify-center" aria-hidden="true">
               <div className="bg-white p-4 rounded-lg w-full h-full flex items-center justify-center">
-                <Image
-                  src="/assets/images/chat.png"
-                  alt="Community Chat"
-                  width={180}
-                  height={96}
-                  className="max-w-full max-h-full object-contain invert-colors"
-                />
+                <picture>
+                  <source srcSet="/assets/images/optimized/chat-768.avif" type="image/avif" />
+                  <source srcSet="/assets/images/optimized/chat-768.webp" type="image/webp" />
+                  <img src="/assets/images/optimized/chat-768.jpeg" alt="Community Chat" width={180} height={96} className="max-w-full max-h-full object-contain invert-colors" loading="lazy" />
+                </picture>
               </div>
             </div>
             <div className="flex items-center gap-4 mb-4">
@@ -140,13 +129,11 @@ export default function Features() {
           <div className="bg-white shadow-lg rounded-2xl p-8 flex flex-col items-start h-full feature-card" role="listitem">
             <div className="w-full h-56 bg-gray-50 rounded-lg overflow-hidden mb-4 flex items-center justify-center" aria-hidden="true">
               <div className="bg-white p-4 rounded-lg w-full h-full flex items-center justify-center">
-                <Image
-                  src="/assets/images/safe.png"
-                  alt="Safe Zone Alerts"
-                  width={180}
-                  height={96}
-                  className="max-w-full max-h-full object-contain invert-colors"
-                />
+                <picture>
+                  <source srcSet="/assets/images/optimized/safe-768.avif" type="image/avif" />
+                  <source srcSet="/assets/images/optimized/safe-768.webp" type="image/webp" />
+                  <img src="/assets/images/optimized/safe-768.jpeg" alt="Safe Zone Alerts" width={180} height={96} className="max-w-full max-h-full object-contain invert-colors" loading="lazy" />
+                </picture>
               </div>
             </div>
             <div className="flex items-center gap-4 mb-4">

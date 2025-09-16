@@ -34,7 +34,7 @@ export default function Hero() {
     return () => observer.disconnect();
   }, []);
   return (
-  <section id="hero" className="relative flex flex-col items-center justify-center py-16 md:py-24 lg:py-32 text-center bg-gradient-to-br from-[#FFF9F0] via-[#FFF4E6] to-[#FFF9F0] overflow-hidden" aria-label="Hero section">
+  <section id="hero" className="relative flex flex-col items-center justify-center py-12 md:py-16 lg:py-20 text-center bg-gradient-to-br from-[#FFF9F0] via-[#FFF4E6] to-[#FFF9F0] overflow-hidden" aria-label="Hero section">
       {/* Sacred geometry animated background (SVG) */}
       <svg className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true">
         <circle cx="50%" cy="50%" r="180" fill="#FFD23F" fillOpacity="0.08" />
@@ -60,7 +60,7 @@ export default function Hero() {
       </svg>
   <div className="relative z-10 w-full pointer-events-auto">
         <div className="site-container grid grid-cols-1 md:grid-cols-12 gap-8 items-center px-6">
-        <div className="md:col-span-6 lg:col-span-7 text-center md:text-left">
+  <div className="md:col-span-6 lg:col-span-5 text-center md:text-left">
           <h1 className="font-montserrat font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 3xl:text-8xl text-black mb-6 leading-tight">
             {/* highlight the brand word with accent using React elements */}
             {(() => {
@@ -119,19 +119,27 @@ export default function Hero() {
       </div>
           </div>
         {/* Hero illustration */}
-        <div className="md:col-span-6 lg:col-span-5 flex items-center justify-center">
-          <div className="w-full rounded-2xl overflow-hidden shadow-2xl bg-white p-6 lg:p-8">
-              <div className="w-full rounded-lg overflow-hidden bg-gray-50">
-                <Image
-                  src="/assets/images/hero.png"
-                  alt="Pilgrims and volunteers collaborating at Mahakumbh"
-                  className="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-cover"
-                  width={800}
-                  height={384}
-                  loading="lazy"
-                />
+        <div className="md:col-span-6 lg:col-span-7 flex items-center justify-center">
+          <div className="w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl bg-white p-0 mx-auto">
+              {/* Full-bleed image area (no inner padding) - wrapper aspect increased for larger presence */}
+              <div className="w-full rounded-t-2xl overflow-hidden bg-gray-50 aspect-[16/9] md:aspect-[1400/760] flex items-center justify-center">
+                <picture>
+                  <source srcSet="/assets/images/optimized/hero-1366.avif" type="image/avif" />
+                  <source srcSet="/assets/images/optimized/hero-1366.webp" type="image/webp" />
+                  <img
+                    src="/assets/images/optimized/hero-1366.jpeg"
+                    alt="Pilgrims and volunteers collaborating at Mahakumbh"
+                    className="w-full h-full object-cover object-center"
+                    width={1400}
+                    height={760}
+                    loading="eager"
+                  />
+                </picture>
               </div>
-              <div className="mt-4 text-sm md:text-base text-black">The Mahakumbh of Ujjain.</div>
+              {/* Caption area with padding */}
+              <div className="p-6 lg:p-8">
+                <div className="mt-0 text-sm md:text-base text-black text-center">The grand spectacle of Mahakumbh in Ujjain, where millions gather on the sacred banks to take a holy dip, offer prayers, and witness the divine Ganga Aarti in an atmosphere filled with devotion and light.</div>
+              </div>
           </div>
         </div>
         </div>

@@ -27,7 +27,7 @@ export default function WhyBandhuConnect() {
           {t('why.title') ?? 'Why BandhuConnect+'}
         </h2>
         <div className="why-bandhu-grid grid grid-cols-3 gap-12">
-          {features.map((feature, idx) => (
+          {features.map((feature) => (
             <div key={feature.titleKey} className="why-col flex flex-col items-start text-left min-h-[180px] relative px-3">
               <h3 className="why-col-title text-lg font-semibold mb-2">{t(feature.titleKey)}</h3>
               <p className="why-col-desc text-base text-gray-700">{t(feature.descKey)}</p>

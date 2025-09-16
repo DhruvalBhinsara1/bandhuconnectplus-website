@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "images:optimize": "node ./tools/optimize-images.js",
+  "move:logo": "node ./tools/move-logo.js",
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint"
@@ -11,9 +13,11 @@
   "dependencies": {
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "next": "15.5.3"
+    "next": "15.5.3",
+    "react-focus-lock": "^2.9.0"
   },
   "devDependencies": {
+    "sharp": "^0.33.0",
     "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^19",
